@@ -1,0 +1,75 @@
+<div class="screen">
+  <div class="header">
+    <h1>🤝 Church Friends Foundation</h1>
+    <p>Helping medical & needy families with love</p>
+  </div>
+
+  <form class="donation-card" [formGroup]="form" (ngSubmit)="donate()">
+
+    <!-- Checkbox -->
+    <div class="checkbox-row">
+      <input type="checkbox" formControlName="isFirstTime" id="firstTime" />
+      <label for="firstTime">Is this your first contribution?</label>
+    </div>
+
+    <!-- Name (only when checkbox enabled) -->
+    <div class="field" *ngIf="showName()">
+      <input
+        type="text"
+        formControlName="name"
+        placeholder=" "
+      />
+      <label>Name</label>
+    </div>
+
+    <!-- Mobile -->
+    <div class="field">
+      <input
+        type="tel"
+        formControlName="mobile"
+        placeholder=" "
+        maxlength="10"
+      />
+      <label>Mobile Number</label>
+
+      <small *ngIf="submitted() && f.mobile.errors">
+        Enter a valid 10-digit mobile number
+      </small>
+    </div>
+
+    <!-- Amount -->
+    <!-- Quick Amount Chips -->
+    <div class="amount-chips">
+      <button
+        type="button"
+        *ngFor="let amt of quickAmounts"
+        (click)="selectAmount(amt)">
+        ₹{{ amt }}
+      </button>
+    </div>
+
+    <div class="field">
+      <input
+        type="number"
+        formControlName="amount"
+        placeholder=" "
+      />
+      <label>Amount</label>
+
+      <small *ngIf="submitted() && f.amount.errors">
+        Enter a valid amount
+      </small>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta">
+      <button type="submit">
+        Donate Now 🙏
+      </button>
+      <span class="note">
+        Secure UPI payment • No login required
+      </span>
+    </div>
+
+  </form>
+</div>
