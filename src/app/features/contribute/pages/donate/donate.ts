@@ -97,8 +97,8 @@ if (this.isMobileDevice()) {
   private generateUpiLink(): string {
   const value = this.form.value;
 
-  const upiId = 'anishkumar.dr@icici'; // TODO: replace
-  const payeeName = 'Anish';
+  const upiId = 'chrispreethi@ybl'; // TODO: replace
+  const payeeName = 'Chris Preethi Foundation'; // TODO: replace
 
   const amount = value.amount;
   const name = value.name || 'Donor';
